@@ -1,5 +1,5 @@
 #Expression Parser
-A light-weight library which parses and evaluates the string expressions.
+A light-weight library which parses and evaluates the string expressions.  
 ##Usage Illustration
 ```
 Expression expression = new Expression(/* String Expression */);  
