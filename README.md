@@ -2,7 +2,7 @@
 A light-weight library which parses and evaluates the string expressions.  
 ## Usage Illustration
 ``` java
-Expression expression = new Expression("tan(89)");
+Expression expression = new Expression(/* String Expression */);
 try {
     System.out.println(expression.evaluate());
 } catch (ExpressionParserException e) {
