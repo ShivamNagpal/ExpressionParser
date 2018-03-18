@@ -286,8 +286,8 @@ class Evaluation {
                         if (Expression.normalizeTrigonometricFunctions) {
                             result = Double.parseDouble(decimalFormat.format(result));
                         }
+                        break;
                     }
-                    break;
                     case "tan": {
                         Expression expression = new Expression(expressionStr);
                         result = expression.evaluate();
@@ -302,8 +302,8 @@ class Evaluation {
                                 result = Double.NEGATIVE_INFINITY;
                             }
                         }
+                        break;
                     }
-                    break;
                     case "log": {
                         Expression expression = new Expression(expressionStr);
                         result = expression.evaluate();
