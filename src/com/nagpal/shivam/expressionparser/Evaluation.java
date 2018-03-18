@@ -76,7 +76,7 @@ class Evaluation {
                             }
                             i++;
                         }
-                        infixTokenNodeArrayList.add(new TokenNode(TokenNode.TYPE_OPERAND, TokenNode.SUB_TYPE_OPERAND_FUNCTION, expressionStringBuilder.substring(previousIndex, i)));
+                        infixTokenNodeArrayList.add(new TokenNode(TokenNode.TYPE_OPERAND, TokenNode.SUB_TYPE_OPERAND_FUNCTION, expressionStringBuilder.substring(previousIndex, i + 1)));
                         continue;
                     } else {
                         infixTokenNodeArrayList.add(new TokenNode(TokenNode.TYPE_OPERAND, TokenNode.SUB_TYPE_OPERAND_SYMBOL, expressionStringBuilder.substring(previousIndex, i)));
