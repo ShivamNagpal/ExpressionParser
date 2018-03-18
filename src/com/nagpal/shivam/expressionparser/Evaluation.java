@@ -244,24 +244,29 @@ class Evaluation {
 
     private static TokenNode evaluateFunctionExpression(String nodeStr) throws ExpressionParserException {
         int expressionIndex = nodeStr.indexOf('(');
-        Expression expression = new Expression(nodeStr.substring(expressionIndex));
-        String expressionStr = nodeStr.substring(0, expressionIndex);
-        double result = expression.evaluate();
+        String expressionStr = nodeStr.substring(expressionIndex);
+        String functionStr = nodeStr.substring(0, expressionIndex);
+        double result;
 
-        switch (expressionStr.length()) {
+        switch (functionStr.length()) {
 
             case 2:
-                switch (expressionStr) {
-                    case "ln":
+                switch (functionStr) {
+                    case "ln": {
+                        Expression expression = new Expression(expressionStr);
+                        result = expression.evaluate();
                         result = Math.log(result);
                         break;
+                    }
                     default:
                         throw new ExpressionParserException(ExpressionParserException.INVALID_FUNCTION);
                 }
                 break;
             case 3:
-                switch (expressionStr) {
-                    case "sin":
+                switch (functionStr) {
+                    case "sin": {
+                        Expression expression = new Expression(expressionStr);
+                        result = expression.evaluate();
                         if (Expression.angleUnits == Expression.ANGLE_UNITS_DEGREE) {
                             result = Math.toRadians(result);
                         }
@@ -270,7 +275,10 @@ class Evaluation {
                             result = Double.parseDouble(decimalFormat.format(result));
                         }
                         break;
-                    case "cos":
+                    }
+                    case "cos": {
+                        Expression expression = new Expression(expressionStr);
+                        result = expression.evaluate();
                         if (Expression.angleUnits == Expression.ANGLE_UNITS_DEGREE) {
                             result = Math.toRadians(result);
                         }
@@ -278,8 +286,11 @@ class Evaluation {
                         if (Expression.normalizeTrigonometricFunctions) {
                             result = Double.parseDouble(decimalFormat.format(result));
                         }
-                        break;
-                    case "tan":
+                    }
+                    break;
+                    case "tan": {
+                        Expression expression = new Expression(expressionStr);
+                        result = expression.evaluate();
                         if (Expression.angleUnits == Expression.ANGLE_UNITS_DEGREE) {
                             result = Math.toRadians(result);
                         }
@@ -291,49 +302,77 @@ class Evaluation {
                                 result = Double.NEGATIVE_INFINITY;
                             }
                         }
-                        break;
-                    case "log":
+                    }
+                    break;
+                    case "log": {
+                        Expression expression = new Expression(expressionStr);
+                        result = expression.evaluate();
                         result = Math.log10(result);
                         break;
+                    }
                     default:
                         throw new ExpressionParserException(ExpressionParserException.INVALID_FUNCTION);
                 }
                 break;
             case 4:
-                switch (expressionStr) {
-                    case "sqrt":
+                switch (functionStr) {
+                    case "sqrt": {
+                        Expression expression = new Expression(expressionStr);
+                        result = expression.evaluate();
                         result = Math.sqrt(result);
                         break;
-                    case "cbrt":
+                    }
+                    case "cbrt": {
+                        Expression expression = new Expression(expressionStr);
+                        result = expression.evaluate();
                         result = Math.cbrt(result);
                         break;
-                    case "asin":
+                    }
+                    case "asin": {
+                        Expression expression = new Expression(expressionStr);
+                        result = expression.evaluate();
                         result = Math.asin(result);
                         if (Expression.angleUnits == Expression.ANGLE_UNITS_DEGREE) {
                             result = Math.toDegrees(result);
                         }
                         break;
-                    case "acos":
+                    }
+                    case "acos": {
+                        Expression expression = new Expression(expressionStr);
+                        result = expression.evaluate();
                         result = Math.acos(result);
                         if (Expression.angleUnits == Expression.ANGLE_UNITS_DEGREE) {
                             result = Math.toDegrees(result);
                         }
                         break;
-                    case "atan":
+                    }
+                    case "atan": {
+                        Expression expression = new Expression(expressionStr);
+                        result = expression.evaluate();
                         result = Math.atan(result);
                         if (Expression.angleUnits == Expression.ANGLE_UNITS_DEGREE) {
                             result = Math.toDegrees(result);
                         }
                         break;
-                    case "sinh":
+                    }
+                    case "sinh": {
+                        Expression expression = new Expression(expressionStr);
+                        result = expression.evaluate();
                         result = Math.sinh(result);
                         break;
-                    case "cosh":
+                    }
+                    case "cosh": {
+                        Expression expression = new Expression(expressionStr);
+                        result = expression.evaluate();
                         result = Math.cosh(result);
                         break;
-                    case "tanh":
+                    }
+                    case "tanh": {
+                        Expression expression = new Expression(expressionStr);
+                        result = expression.evaluate();
                         result = Math.tanh(result);
                         break;
+                    }
                     default:
                         throw new ExpressionParserException(ExpressionParserException.INVALID_FUNCTION);
                 }
