@@ -320,6 +320,7 @@ class Evaluation {
                         derivate.insert(0, '(').append(")/(2*").append(h).append(")");
                         Expression expression = new Expression(derivate.toString());
                         result = expression.evaluate();
+                        result = Double.parseDouble(String.format("%.3f", result));
                         break;
                     }
                     default:
