@@ -244,9 +244,9 @@ class Evaluation {
 
     private static TokenNode evaluateFunctionExpression(String nodeStr) throws ExpressionParserException {
         int expressionIndex = nodeStr.indexOf('(');
-        String expressionStr = nodeStr.substring(expressionIndex);
+        String expressionStr = nodeStr.substring(expressionIndex + 1, nodeStr.length() - 1);
         String functionStr = nodeStr.substring(0, expressionIndex);
-        double result;
+        double result = Double.NaN;
 
         switch (functionStr.length()) {
 
@@ -308,6 +308,18 @@ class Evaluation {
                         Expression expression = new Expression(expressionStr);
                         result = expression.evaluate();
                         result = Math.log10(result);
+                        break;
+                    }
+                    case "der": {
+                        int i = expressionStr.indexOf(',');
+                        String function = expressionStr.substring(0, i);
+                        String value = expressionStr.substring(i + 1);
+                        StringBuilder derivate = new StringBuilder();
+                        String h = "0.000001";
+                        derivate.append(function.replaceAll("X", "(" + value + "+" + h + ")")).append("-").append(function.replaceAll("X", "(" + value + "-" + h + ")"));
+                        derivate.insert(0, '(').append(")/(2*").append(h).append(")");
+                        Expression expression = new Expression(derivate.toString());
+                        result = expression.evaluate();
                         break;
                     }
                     default:
