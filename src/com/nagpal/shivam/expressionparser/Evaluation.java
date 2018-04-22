@@ -64,19 +64,25 @@ class Evaluation {
                     operandFlags.resetFlags();
                     if (ch == '(') {
                         int openBraces = 0;
-                        while (i < length) {
+                        while (i < length && expressionStringBuilder.charAt(i) != '\0') {
                             char tempCh = expressionStringBuilder.charAt(i);
                             if (tempCh == '(') {
                                 openBraces += 1;
                             } else if (tempCh == ')') {
                                 openBraces -= 1;
                                 if (openBraces == 0) {
+                                    i += 1;
                                     break;
                                 }
                             }
                             i++;
                         }
-                        infixTokenNodeArrayList.add(new TokenNode(TokenNode.TYPE_OPERAND, TokenNode.SUB_TYPE_OPERAND_FUNCTION, expressionStringBuilder.substring(previousIndex, i + 1)));
+                        while (openBraces != 0) {
+                            expressionStringBuilder.insert(i, ')');
+                            openBraces -= 1;
+                            i += 1;
+                        }
+                        infixTokenNodeArrayList.add(new TokenNode(TokenNode.TYPE_OPERAND, TokenNode.SUB_TYPE_OPERAND_FUNCTION, expressionStringBuilder.substring(previousIndex, i)));
                         continue;
                     } else {
                         infixTokenNodeArrayList.add(new TokenNode(TokenNode.TYPE_OPERAND, TokenNode.SUB_TYPE_OPERAND_SYMBOL, expressionStringBuilder.substring(previousIndex, i)));
