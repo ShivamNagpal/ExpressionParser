@@ -32,7 +32,7 @@ class Token {
         if (ch == '!' || ch == '%') {
             currentTokenSubType = TokenNode.SUB_TYPE_OPERATOR_UNARY;
             return true;
-        } else if (ch == '+' || ch == '-' || ch == '*' || ch == '/' || ch == '#' || ch == '^' || ch == 'E') {
+        } else if (ch == '+' || ch == '-' || ch == '*' || ch == '/' || ch == '#' || ch == '^' || ch == 'E' || ch == 'P' || ch == 'C') {
             currentTokenSubType = TokenNode.SUB_TYPE_OPERATOR_BINARY;
             return true;
         }
@@ -79,6 +79,8 @@ class Token {
 
             case "!":
             case "%":
+            case "P":
+            case "C":
                 return 4;
         }
         return -1;

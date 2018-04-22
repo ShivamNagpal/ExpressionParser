@@ -206,12 +206,11 @@ class Evaluation {
         double opd = Double.parseDouble(opdStr);
         switch (oprStr) {
             case "!":
-                double result = 1;
-                while (opd > 0) {
-                    result *= opd;
-                    opd--;
+                if (SupportMethods.isInteger(opd)) {
+                    return SupportMethods.factorial((int) opd);
+                } else {
+                    throw new ExpressionParserException(ExpressionParserException.MATH_ERROR);
                 }
-                return result;
             case "%":
                 return opd / 100;
         }
@@ -236,10 +235,20 @@ class Evaluation {
                 return Math.pow(op1, op2);
             case "E":
                 return op1 * Math.pow(10, op2);
+            case "P":
+                if (SupportMethods.isInteger(op1) && SupportMethods.isInteger(op2)) {
+                    return SupportMethods.permutations((int) op1, (int) op2);
+                } else {
+                    throw new ExpressionParserException(ExpressionParserException.MATH_ERROR);
+                }
+            case "C":
+                if (SupportMethods.isInteger(op1) && SupportMethods.isInteger(op2)) {
+                    return SupportMethods.combinations((int) op1, (int) op2);
+                } else {
+                    throw new ExpressionParserException(ExpressionParserException.MATH_ERROR);
+                }
         }
-
         throw new ExpressionParserException(ExpressionParserException.INVALID_BINARY_OPERATOR);
-
     }
 
     private static TokenNode evaluateFunctionExpression(String nodeStr) throws ExpressionParserException {
