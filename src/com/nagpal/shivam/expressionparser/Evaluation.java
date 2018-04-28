@@ -71,18 +71,21 @@ class Evaluation {
                             } else if (tempCh == ')') {
                                 openBraces -= 1;
                                 if (openBraces == 0) {
-                                    i += 1;
                                     break;
                                 }
                             }
                             i++;
                         }
-                        while (openBraces != 0) {
-                            expressionStringBuilder.insert(i, ')');
-                            openBraces -= 1;
-                            i += 1;
+                        if (openBraces != 0) {
+                            while (openBraces != 0) {
+                                expressionStringBuilder.insert(i, ')');
+                                openBraces -= 1;
+                                i += 1;
+                            }
+                            i--;
                         }
-                        infixTokenNodeArrayList.add(new TokenNode(TokenNode.TYPE_OPERAND, TokenNode.SUB_TYPE_OPERAND_FUNCTION, expressionStringBuilder.substring(previousIndex, i)));
+                        infixTokenNodeArrayList.add(new TokenNode(TokenNode.TYPE_OPERAND, TokenNode.SUB_TYPE_OPERAND_FUNCTION, expressionStringBuilder.substring(previousIndex, i + 1)));
+                        previousIndex = i + 1;
                         continue;
                     } else {
                         infixTokenNodeArrayList.add(new TokenNode(TokenNode.TYPE_OPERAND, TokenNode.SUB_TYPE_OPERAND_SYMBOL, expressionStringBuilder.substring(previousIndex, i)));
