@@ -323,9 +323,27 @@ class Evaluation {
                         break;
                     }
                     case "log": {
-                        Expression expression = new Expression(expressionStr);
-                        result = expression.evaluate();
-                        result = Math.log10(result);
+                        String[] parameters = expressionStr.split(",");
+                        switch (parameters.length) {
+                            case 1:
+                                Expression expression = new Expression(parameters[0].trim());
+                                result = expression.evaluate();
+                                result = Math.log10(result);
+                                break;
+                            case 2:
+                                Expression expression1 = new Expression(parameters[0].trim());
+                                double result1 = expression1.evaluate();
+                                result1 = Math.log10(result1);
+
+                                Expression expression2 = new Expression(parameters[1].trim());
+                                double result2 = expression2.evaluate();
+                                result2 = Math.log10(result2);
+                                result = result1 / result2;
+                                break;
+                            default:
+                                throw new ExpressionParserException(ExpressionParserException.INVALID_ARGUMENTS);
+                        }
+
                         break;
                     }
                     case "der": {
