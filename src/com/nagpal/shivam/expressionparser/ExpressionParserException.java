@@ -17,6 +17,7 @@
 package com.nagpal.shivam.expressionparser;
 
 public class ExpressionParserException extends Exception {
+    static final String INVALID_ARGUMENTS = "Invalid Arguments";
     static final String INVALID_BINARY_OPERATOR = "Invalid Binary Operator.";
     static final String INVALID_EXPRESSION = "Invalid Expression.";
     static final String INVALID_FUNCTION = "Invalid Function.";
