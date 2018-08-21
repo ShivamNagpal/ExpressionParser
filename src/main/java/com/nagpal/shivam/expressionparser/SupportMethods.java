@@ -2,8 +2,8 @@ package com.nagpal.shivam.expressionparser;
 
 class SupportMethods {
 
-    static long factorial(int num) {
-        long result = 1;
+    static double factorial(int num) {
+        double result = 1;
         while (num > 0) {
             result *= num;
             num--;
@@ -11,14 +11,14 @@ class SupportMethods {
         return result;
     }
 
-    static long permutations(int n, int r) throws ExpressionParserException {
+    static double permutations(int n, int r) throws ExpressionParserException {
         if (n < r) {
             throw new ExpressionParserException(ExpressionParserException.MATH_ERROR);
         }
         return (factorial(n) / factorial((n - r)));
     }
 
-    static long combinations(int n, int r) throws ExpressionParserException {
+    static double combinations(int n, int r) throws ExpressionParserException {
         if (n < r) {
             throw new ExpressionParserException(ExpressionParserException.MATH_ERROR);
         }
