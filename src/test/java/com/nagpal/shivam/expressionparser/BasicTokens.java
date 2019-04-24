@@ -5,7 +5,7 @@ import org.junit.Test;
 import static com.nagpal.shivam.expressionparser.Helper.*;
 import static org.junit.Assert.assertEquals;
 
-public class BasicTokenTests {
+public class BasicTokens {
 
     @Test
     public void combination() throws Exception {
