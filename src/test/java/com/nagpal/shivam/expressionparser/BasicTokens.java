@@ -138,7 +138,7 @@ public class BasicTokens {
 
     @Test
     public void plusBinary() throws Exception {
-        String expression = "3.2 + 6";
+        String expression = "3.2+6";
         assertEquals(9.2, evaluate(expression), ABSOLUTE);
     }
 

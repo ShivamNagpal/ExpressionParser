@@ -36,10 +36,10 @@ public class LogarithmFunctions {
         String expression = "log(16,4)";
         assertEquals(2.0, evaluate(expression), ABSOLUTE);
 
-        expression = "log(e, e)";
+        expression = "log(e,e)";
         assertEquals(1.0, evaluate(expression), ABSOLUTE);
 
-        expression = "log(10, 10)";
+        expression = "log(10,10)";
         assertEquals(1.0, evaluate(expression), ABSOLUTE);
     }
 }
