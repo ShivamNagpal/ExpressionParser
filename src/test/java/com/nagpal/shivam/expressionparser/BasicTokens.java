@@ -53,15 +53,6 @@ public class BasicTokens {
     }
 
     @Test
-    public void ignoreWhiteSpace() throws Exception {
-        String expression = "5+  3";
-        assertEquals(8.0, evaluate(expression), ABSOLUTE);
-
-        expression = "5+  .3";
-        assertEquals(5.3, evaluate(expression), ABSOLUTE);
-    }
-
-    @Test
     public void minusUnary() throws Exception {
         String expression = "-1";
         assertEquals(-1.0, evaluate(expression), ABSOLUTE);
