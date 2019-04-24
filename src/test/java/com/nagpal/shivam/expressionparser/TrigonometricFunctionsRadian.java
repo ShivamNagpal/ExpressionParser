@@ -17,17 +17,17 @@ public class TrigonometricFunctionsRadian {
     @Test
     public void sine() throws Exception {
         String expression = "sin(pi/2)";
-        assertEquals(1.0, evaluate(expression), DELTA);
+        assertEquals(1.0, evaluate(expression), ABSOLUTE);
 
         expression = "sin(0)";
-        assertEquals(0.0, evaluate(expression), DELTA);
+        assertEquals(0.0, evaluate(expression), ABSOLUTE);
 
         expression = "sin(pi/6)";
         assertEquals(0.5, evaluate(expression), DELTA);
 
         // TODO: Check for supporting -pi directly
         expression = "sin(-1*pi/2)";
-        assertEquals(-1.0, evaluate(expression), DELTA);
+        assertEquals(-1.0, evaluate(expression), ABSOLUTE);
 
         expression = "sin(pi)";
         assertEquals(0.0, evaluate(expression), DELTA);
@@ -42,7 +42,7 @@ public class TrigonometricFunctionsRadian {
         assertEquals(0.0, evaluate(expression), DELTA);
 
         expression = "cos(0)";
-        assertEquals(1.0, evaluate(expression), DELTA);
+        assertEquals(1.0, evaluate(expression), ABSOLUTE);
 
         expression = "cos(pi/3)";
         assertEquals(0.5, evaluate(expression), DELTA);
@@ -51,7 +51,7 @@ public class TrigonometricFunctionsRadian {
         assertEquals(0.0, evaluate(expression), DELTA);
 
         expression = "cos(pi)";
-        assertEquals(-1.0, evaluate(expression), DELTA);
+        assertEquals(-1.0, evaluate(expression), ABSOLUTE);
 
         expression = "cos(-1*pi/3)";
         assertEquals(0.5, evaluate(expression), DELTA);
@@ -63,7 +63,7 @@ public class TrigonometricFunctionsRadian {
         assertEquals(1.633123935319537E16, evaluate(expression), ABSOLUTE);
 
         expression = "tan(0)";
-        assertEquals(0.0, evaluate(expression), DELTA);
+        assertEquals(0.0, evaluate(expression), ABSOLUTE);
 
         expression = "tan(pi/4)";
         assertEquals(1.0, evaluate(expression), DELTA);
@@ -81,10 +81,10 @@ public class TrigonometricFunctionsRadian {
     @Test
     public void antiSine() throws Exception {
         String expression = "asin(1)";
-        assertEquals(Math.PI / 2, evaluate(expression), DELTA);
+        assertEquals(Math.PI / 2, evaluate(expression), ABSOLUTE);
 
         expression = "asin(-1)";
-        assertEquals(-Math.PI / 2, evaluate(expression), DELTA);
+        assertEquals(-Math.PI / 2, evaluate(expression), ABSOLUTE);
 
         expression = "asin(2)";
         checkForError(expression);
@@ -96,10 +96,10 @@ public class TrigonometricFunctionsRadian {
     @Test
     public void antiCosine() throws Exception {
         String expression = "acos(1)";
-        assertEquals(0, evaluate(expression), DELTA);
+        assertEquals(0, evaluate(expression), ABSOLUTE);
 
         expression = "acos(-1)";
-        assertEquals(Math.PI, evaluate(expression), DELTA);
+        assertEquals(Math.PI, evaluate(expression), ABSOLUTE);
 
         expression = "acos(2)";
         checkForError(expression);
@@ -111,27 +111,27 @@ public class TrigonometricFunctionsRadian {
     @Test
     public void antiTangent() throws Exception {
         String expression = "atan(1)";
-        assertEquals(Math.PI / 4, evaluate(expression), DELTA);
+        assertEquals(Math.PI / 4, evaluate(expression), ABSOLUTE);
 
         expression = "atan(-1)";
-        assertEquals(-Math.PI / 4, evaluate(expression), DELTA);
+        assertEquals(-Math.PI / 4, evaluate(expression), ABSOLUTE);
     }
 
     @Test
     public void hyperbolicSine() throws Exception {
         String expression = "sinh(0)";
-        assertEquals(0.0, evaluate(expression), DELTA);
+        assertEquals(0.0, evaluate(expression), ABSOLUTE);
     }
 
     @Test
     public void hyperbolicCosine() throws Exception {
         String expression = "cosh(0)";
-        assertEquals(1.0, evaluate(expression), DELTA);
+        assertEquals(1.0, evaluate(expression), ABSOLUTE);
     }
 
     @Test
     public void hyperbolicTangent() throws Exception {
         String expression = "tanh(0)";
-        assertEquals(0.0, evaluate(expression), DELTA);
+        assertEquals(0.0, evaluate(expression), ABSOLUTE);
     }
 }

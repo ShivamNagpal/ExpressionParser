@@ -6,85 +6,85 @@ import org.junit.Test;
 import static com.nagpal.shivam.expressionparser.Helper.*;
 import static org.junit.Assert.assertEquals;
 
-public class TrigonometricFunctionsDegree {
+public class TrigonometricFunctionsRadianNormalized {
 
     @BeforeClass
     public static void setupPreferences() {
-        Expression.setAngleUnits(Expression.ANGLE_UNITS_DEGREE);
-        Expression.setNormalizeTrigonometricFunctions(false);
+        Expression.setAngleUnits(Expression.ANGLE_UNITS_RADIAN);
+        Expression.setNormalizeTrigonometricFunctions(true);
     }
 
     @Test
     public void sine() throws Exception {
-        String expression = "sin(90)";
+        String expression = "sin(pi/2)";
         assertEquals(1.0, evaluate(expression), ABSOLUTE);
 
         expression = "sin(0)";
         assertEquals(0.0, evaluate(expression), ABSOLUTE);
 
-        expression = "sin(30)";
-        assertEquals(0.5, evaluate(expression), DELTA);
+        expression = "sin(pi/6)";
+        assertEquals(0.5, evaluate(expression), ABSOLUTE);
 
         // TODO: Check for supporting -pi directly
-        expression = "sin(-90)";
+        expression = "sin(-1*pi/2)";
         assertEquals(-1.0, evaluate(expression), ABSOLUTE);
 
-        expression = "sin(180)";
-        assertEquals(0.0, evaluate(expression), DELTA);
+        expression = "sin(pi)";
+        assertEquals(0.0, evaluate(expression), ABSOLUTE);
 
-        expression = "sin(-30)";
-        assertEquals(-0.5, evaluate(expression), DELTA);
+        expression = "sin(-1*pi/6)";
+        assertEquals(-0.5, evaluate(expression), ABSOLUTE);
     }
 
     @Test
     public void cosine() throws Exception {
-        String expression = "cos(90)";
-        assertEquals(0.0, evaluate(expression), DELTA);
+        String expression = "cos(pi/2)";
+        assertEquals(0.0, evaluate(expression), ABSOLUTE);
 
         expression = "cos(0)";
         assertEquals(1.0, evaluate(expression), ABSOLUTE);
 
-        expression = "cos(60)";
-        assertEquals(0.5, evaluate(expression), DELTA);
+        expression = "cos(pi/3)";
+        assertEquals(0.5, evaluate(expression), ABSOLUTE);
 
-        expression = "cos(-90)";
-        assertEquals(0.0, evaluate(expression), DELTA);
+        expression = "cos(-1*pi/2)";
+        assertEquals(0.0, evaluate(expression), ABSOLUTE);
 
-        expression = "cos(180)";
+        expression = "cos(pi)";
         assertEquals(-1.0, evaluate(expression), ABSOLUTE);
 
-        expression = "cos(-60)";
-        assertEquals(0.5, evaluate(expression), DELTA);
+        expression = "cos(-1*pi/3)";
+        assertEquals(0.5, evaluate(expression), ABSOLUTE);
     }
 
     @Test
     public void tangent() throws Exception {
-        String expression = "tan(90)";
-        assertEquals(1.633123935319537E16, evaluate(expression), ABSOLUTE);
+        String expression = "tan(pi/2)";
+        assertEquals(Double.POSITIVE_INFINITY, evaluate(expression), ABSOLUTE);
 
         expression = "tan(0)";
         assertEquals(0.0, evaluate(expression), ABSOLUTE);
 
-        expression = "tan(45)";
+        expression = "tan(pi/4)";
         assertEquals(1.0, evaluate(expression), DELTA);
 
-        expression = "tan(-90)";
-        assertEquals(-1.633123935319537E16, evaluate(expression), ABSOLUTE);
+        expression = "tan(-1*pi/2)";
+        assertEquals(Double.NEGATIVE_INFINITY, evaluate(expression), ABSOLUTE);
 
-        expression = "tan(180)";
+        expression = "tan(pi)";
         assertEquals(0.0, evaluate(expression), DELTA);
 
-        expression = "tan(-45)";
+        expression = "tan(-1*pi/4)";
         assertEquals(-1.0, evaluate(expression), DELTA);
     }
 
     @Test
     public void antiSine() throws Exception {
         String expression = "asin(1)";
-        assertEquals(90, evaluate(expression), ABSOLUTE);
+        assertEquals(Math.PI / 2, evaluate(expression), ABSOLUTE);
 
         expression = "asin(-1)";
-        assertEquals(-90, evaluate(expression), ABSOLUTE);
+        assertEquals(-Math.PI / 2, evaluate(expression), ABSOLUTE);
 
         expression = "asin(2)";
         checkForError(expression);
@@ -99,7 +99,7 @@ public class TrigonometricFunctionsDegree {
         assertEquals(0, evaluate(expression), ABSOLUTE);
 
         expression = "acos(-1)";
-        assertEquals(180, evaluate(expression), ABSOLUTE);
+        assertEquals(Math.PI, evaluate(expression), ABSOLUTE);
 
         expression = "acos(2)";
         checkForError(expression);
@@ -111,10 +111,10 @@ public class TrigonometricFunctionsDegree {
     @Test
     public void antiTangent() throws Exception {
         String expression = "atan(1)";
-        assertEquals(45, evaluate(expression), ABSOLUTE);
+        assertEquals(Math.PI / 4, evaluate(expression), ABSOLUTE);
 
         expression = "atan(-1)";
-        assertEquals(-45, evaluate(expression), ABSOLUTE);
+        assertEquals(-Math.PI / 4, evaluate(expression), ABSOLUTE);
     }
 
     @Test
