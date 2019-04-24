@@ -30,3 +30,7 @@ hs_err_pid*
 
 #Output Folder
 out
+build
+
+#Gradle
+.gradle
